@@ -206,13 +206,13 @@ def main_menu(message):
         database = sqlite3.connect('bot_db.sqlite')
         db = database.cursor()
 
-        db.execute("UPDATE users SET bcond = 4 WHERE id = ?", (message.chat.id,))
+        db.execute("UPDATE users SET bot_cond = 4 WHERE id = ?", (message.chat.id,))
         database.commit()
         bot.send_message(message.chat.id, 'Type and send feedback like in a regular chat', reply_markup=done_keyboard())
 
         db.execute("INSERT INTO Reviews (uid, rev_text, rev_date) VALUES (?, ?, datetime('now', 'localtime'))",
                            (message.chat.id, message.text))
-        db.execute("UPDATE Users SET bcond = 0 WHERE id = ?", (message.chat.id,))
+        db.execute("UPDATE Users SET bot_cond = 0 WHERE id = ?", (message.chat.id,))
         database.commit()
         markup = press_done(message)
         send_message(message.chat.id, 'Thanks for your feedback! \U0001F64F', markup)
