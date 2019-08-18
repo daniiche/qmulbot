@@ -10,9 +10,7 @@ import joblib
 import time
 
 
-
 bot = telebot.TeleBot('798457983:AAEPhKpIIBDz8ulAUcxltiZ0Jd5cQbqUdkA')
-server = Flask(__name__)
 
 category_name =  {'1':'Events','2':'Career','3':'Sport','4':'Science','5':'Politics','6':'Education','7':'Culture','8':'Freebies'}
 bot_condition = {'1': 'New user', '2': 'News as post', '3': 'Evening QMUL', '4': 'Feedback'}
@@ -209,7 +207,7 @@ def main_menu(message):
         database = sqlite3.connect('bot_db.sqlite')
         db = database.cursor()
 
-        db.execute("UPDATE users SET bot_cond = 4 WHERE id = ?", (message.chat.id,))
+        db.execute("UPDATE users SET bot_cond = 4 WHERE user_id = ?", (message.chat.id,))
         database.commit()
         bot.send_message(message.chat.id, 'Type and send feedback like in a regular chat', reply_markup=done_keyboard())
 
@@ -582,10 +580,8 @@ def evening_qmul():
 			else:
 				bot.send_message(user, "Sorry, no news today for category: "+category_name.get(str(group)), False)
 
-
-
 def main():
-
+	bot.remove_webhook()
 	bot.polling(none_stop=True)
 
 if __name__ == "__main__":
