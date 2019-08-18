@@ -10,7 +10,7 @@ import joblib
 import time
 from flask import Flask, request
 import os
-import logging
+
 
 
 bot = telebot.TeleBot('798457983:AAEPhKpIIBDz8ulAUcxltiZ0Jd5cQbqUdkA')
@@ -594,7 +594,7 @@ def main():
 		telebot.logger.setLevel(logging.INFO)
 
 		server = Flask(__name__)
-		@server.route("/bot", methods=['POST'])
+		@server.route("/", methods=['POST'])
 		def getMessage():
 			bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
 			return "!", 200
