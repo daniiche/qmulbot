@@ -419,7 +419,7 @@ def categories_list():
 def done_keyboard ():
     markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
     back_btn = types.KeyboardButton('Back to main menu')
-    markup.add(done_btn)
+    markup.add(back_btn)
     return markup 
 
 # main menu keyboard
@@ -581,15 +581,11 @@ def evening_qmul():
 				bot.send_message(user, "Sorry, no news today for category: "+category_name.get(str(group)), False)
 
 def main():
-	bot.remove_webhook()
+	
 	bot.polling(none_stop=True)
 
 if __name__ == "__main__":
 
 	main()
-
-
-
-
 
 
