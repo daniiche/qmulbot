@@ -10,6 +10,7 @@ import joblib
 import time
 from flask import Flask, request
 import os
+import logger
 
 
 
