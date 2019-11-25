@@ -10,7 +10,7 @@ import joblib
 import time
 
 
-bot = telebot.TeleBot('798457983:AAEPhKpIIBDz8ulAUcxltiZ0Jd5cQbqUdkA')
+bot = telebot.TeleBot('798457983:KEY')
 
 category_name =  {'1':'Events','2':'Career','3':'Sport','4':'Science','5':'Politics','6':'Education','7':'Culture','8':'Freebies'}
 bot_condition = {'1': 'New user', '2': 'News as post', '3': 'Evening QMUL', '4': 'Feedback'}
